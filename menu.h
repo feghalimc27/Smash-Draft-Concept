@@ -4,6 +4,7 @@
 void newDraft(int numPlayers, vector<Player> &players) {
     Player *player;
     std::string playerName;
+    char choice = 'k';
 
     // Define Draft Order
     for(int i = 0; i < numPlayers; ++i) {
@@ -18,33 +19,22 @@ void newDraft(int numPlayers, vector<Player> &players) {
         cout << " Seed: " << players[i].getSeed();
         cout << " Draft Position: " << players[i].getPosition() << endl;
     }
-}
+    while(choice != 'n') {
 
-void mainMenu() {
-    cout << "Welcome to Smash Draft!" << endl << endl;
-    cout << "Please select an option from below:\n 1) New Draft \n 2) Load Draft and Schedule \n 3) Exit \n";
-
-    int choice = 0;
-    vector<Player> players;
-
-    while(choice !=3) {
-        cin >> choice;
-        switch(choice) {
-            case 1:
-                cout << "How many players are in the draft?"<< endl;
-                cin >> choice;
-                cin.ignore();
-                newDraft(choice, players);
-                choice = 1;
-            break;
-            case 2:
-                cout << "Kendall Jenner\n";
-            break;
-            case 3:
-                choice = 3;
-            break;
-            default:
-            break;
+        if(choice == 'Y' || choice == 'y') {
+            system("cls");
+            cout << "Man do I love boobs!" << endl;
+            return;
+        }
+        else if(choice == 'N' || choice == 'n') {
+            choice = 'n';
+            cout << "deleting draft order..." << endl;
+            system("cls");
+            return;
+        }
+        else {
+            cout << endl << "Begin draft? (Y/n)" << endl;
+            cin >> choice;
         }
     }
 }
