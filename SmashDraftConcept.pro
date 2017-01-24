@@ -9,3 +9,6 @@ SOURCES += main.cpp \
 HEADERS += \
     player.h \
     menu.h
+
+DISTFILES += \
+    smash4roster.txt
