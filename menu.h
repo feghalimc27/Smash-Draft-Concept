@@ -68,7 +68,7 @@ void actDraft(std::vector<Player> &players) {
             }
             for(int k = 0; k < numPlayers; k++) {
                 cout << players[k].getName() << "'s turn.\n";
-                cout << "Please make a selection:" << endl;
+                cout << "Please enter a number for your selection:" << endl;
                 choose4:
                 cin >> choice;
                 choice--;
