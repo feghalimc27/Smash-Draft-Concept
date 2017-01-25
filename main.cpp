@@ -18,6 +18,11 @@ int main() {
         cin >> choice;
         switch(choice) {
             case 1:
+                // clear players vector before each new draft
+                for(int i = 1; i <= players.size(); i++) {
+                    players.pop_back();
+                }
+
                 cout << "How many players are in the draft?"<< endl;
                 cin >> choice;
                 cin.ignore();
@@ -25,7 +30,7 @@ int main() {
                 choice = 1;
             break;
             case 2:
-                cout << "Kendall Jenner\n";
+                cout << "Mustard\n";
             break;
             case 3:
                 choice = 3;

@@ -19,6 +19,7 @@ public:
     int getSeed();
     std::string getChar(int i);
     std::string getName();
+    int getSize();
 
     void setPosition(int i);
     void setSeed(int i);
@@ -26,5 +27,10 @@ public:
     void setName(std::string name);
 
     void draftFighter(std::string fighter);
+
+    bool operator <(const Player &right) { return draftPosition < right.draftPosition; }
+    bool operator >(const Player &right) { return draftPosition > right.draftPosition; }
+
+    friend std::ostream& operator << (std::ostream &os, const Player &player);
 };
 #endif // PLAYER_H

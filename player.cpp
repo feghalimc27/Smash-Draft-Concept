@@ -17,6 +17,9 @@ int Player::getPosition() {
 int Player::getSeed() {
     return seed;
 }
+int Player::getSize() {
+    return characters.size();
+}
 
 std::string Player::getName() {
     return name;
@@ -50,4 +53,12 @@ void Player::setChar(int i, std::string newChar) {
 
 void Player::draftFighter(std::string fighter) {
     characters.push_back(fighter);
+}
+
+std::ostream& operator<<(std::ostream& os, const Player &player) {
+    os << player.name << "'s team: \n";
+    for(int i = 0; i < player.characters.size(); i++) {
+        os << "     "<< i + 1 << ". " << player.characters[i] << "\n";
+    }
+    return os;
 }

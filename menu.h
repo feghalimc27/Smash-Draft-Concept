@@ -4,6 +4,14 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>>
+
+void displayTeams(std::vector<Player> &players) {
+    cout << "Draft Results:" << endl << endl;
+    for(int i = 0; i < players.size(); i++) {
+        cout << players[i] << endl;
+    }
+}
 
 void actDraft(std::vector<Player> &players) {
     std::ifstream roster;
@@ -14,14 +22,33 @@ void actDraft(std::vector<Player> &players) {
 
     totalChars = 0;
 
-    numPlayers = players.size() + 1;
+    numPlayers = players.size();
+    do {
 
-    cout << "Please select a game: \n1)Smash 4" << endl;
+    cout << "Please select a game: \n1) Smash 4\n2) Melee\n3) Project M\n4) Smash 64\n5) Brawl" << endl;
     cin >> c;
     cin.ignore();
 
     if(c == 1) {
         roster.open("smash4roster.txt");
+    }
+    else if(c == 2) {
+         roster.open("meleeroster.txt");
+    }
+    else if(c == 3) {
+        roster.open("projectmroster.txt");
+    }
+    else if(c == 4) {
+        roster.open("smash64roster.txt");
+    }
+    else if(c == 5) {
+        roster.open("brawlroster.txt");
+    }
+    else {
+        cout << "Invalid game chosen. Please choose a valid game" << endl;
+    }
+    } while(c > 5 || c <= 0);
+
         while(!roster.eof()) {
             getline(roster, entry);
             vRoster.push_back(entry);
@@ -37,9 +64,9 @@ void actDraft(std::vector<Player> &players) {
         invalidPick = true;
         for(int i = 0; i < numPlayers * perTeam;) {
             for(int j = 0; j < vRoster.size(); j++) {
-                cout << vRoster[j] << endl;
+                cout << j + 1 << ". " << vRoster[j] << endl;
             }
-            for(int k = 0; k < players.size(); k++) {
+            for(int k = 0; k < numPlayers; k++) {
                 cout << players[k].getName() << "'s turn.\n";
                 cout << "Please make a selection:" << endl;
                 choose4:
@@ -50,16 +77,19 @@ void actDraft(std::vector<Player> &players) {
                     vRoster[choice] = " ";
                 }
                 else {
-                    cout << "Character drafted. Please try again." << endl;
+                    cout << "Character chosen. Please try again." << endl;
                     goto choose4;
                 }
                 i++;
+                system("cls");
+                for(int j = 0; j < vRoster.size(); j++) {
+                    cout << j + 1 << ". " << vRoster[j] << endl;
+                }
             }
+            system("cls");
         }
-        cout << totalChars;
         roster.close();
         return;
-    }
 }
 
 void newDraft(int numPlayers, vector<Player> &players) {
@@ -80,13 +110,14 @@ void newDraft(int numPlayers, vector<Player> &players) {
         cout << " Seed: " << players[i].getSeed();
         cout << " Draft Position: " << players[i].getPosition() << endl;
     }
-    cin.ignore();
     cout << endl << "Begin draft? (Y/n)" << endl;
     while(choice != 'n') {
         cin >> choice;
         if(choice == 'Y' || choice == 'y') {
             system("cls");
+            std::sort(players.begin(), players.end());
             actDraft(players);
+            displayTeams(players);
             return;
         }
         else if(choice == 'N' || choice == 'n') {
