@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "matches.h"
 
 class Player {
 private:
@@ -11,6 +12,7 @@ private:
     int seed;
     std::string name;
     std::vector<std::string> characters;
+    Matches schedule;
 public:
     Player();
     Player(int xSeed, int xPos);
@@ -27,6 +29,7 @@ public:
     void setName(std::string name);
 
     void draftFighter(std::string fighter);
+    void addToSchedule(std::string name);
 
     bool operator <(const Player &right) { return draftPosition < right.draftPosition; }
     bool operator >(const Player &right) { return draftPosition > right.draftPosition; }

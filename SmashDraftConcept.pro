@@ -5,12 +5,12 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     player.cpp \
-    schedule.cpp
+    matches.cpp
 
 HEADERS += \
     player.h \
     menu.h \
-    schedule.h
+    matches.h
 
 DISTFILES += \
     smash4roster.txt

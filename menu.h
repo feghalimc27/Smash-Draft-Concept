@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>>
+#include <player.h>
 
 void displayTeams(std::vector<Player> &players) {
     cout << "Draft Results:" << endl << endl;
@@ -134,7 +135,7 @@ void newDraft(int numPlayers, vector<Player> &players) {
     }
 }
 
-void showSchedule(vector<Player> &players) {
+void createSchedule(std::vector<Player> &players) {
 
 }
 

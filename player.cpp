@@ -55,6 +55,15 @@ void Player::draftFighter(std::string fighter) {
     characters.push_back(fighter);
 }
 
+void Player::addToSchedule(std::string name) {
+    if(name != this->name) {
+        schedule.addOpponent(name);
+    }
+    else {
+        return;
+    }
+}
+
 std::ostream& operator<<(std::ostream& os, const Player &player) {
     os << player.name << "'s team: \n";
     for(int i = 0; i < player.characters.size(); i++) {
