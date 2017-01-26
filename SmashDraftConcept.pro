@@ -4,11 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    player.cpp
+    player.cpp \
+    schedule.cpp
 
 HEADERS += \
     player.h \
-    menu.h
+    menu.h \
+    schedule.h
 
 DISTFILES += \
     smash4roster.txt

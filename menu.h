@@ -134,4 +134,8 @@ void newDraft(int numPlayers, vector<Player> &players) {
     }
 }
 
+void showSchedule(vector<Player> &players) {
+
+}
+
 #endif // MENU_H

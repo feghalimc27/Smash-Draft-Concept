@@ -14,7 +14,7 @@ int main() {
     vector<Player> players;
 
     while(choice !=3) {
-        cout << "Please select an option from below:\n 1) New Draft \n 2) Load Draft and Schedule \n 3) Exit \n";
+        cout << "Please select an option from below:\n 1) New Draft \n 2) View Teams and Schedule \n 3) Exit \n";
         cin >> choice;
         switch(choice) {
             case 1:
