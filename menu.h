@@ -104,6 +104,7 @@ void newDraft(int numPlayers, vector<Player> &players) {
         cout << "Please enter player " << i + 1 << "'s name: ";
         getline(cin, playerName);
         player->setName(playerName);
+        player->initializeSchedule();
         players.push_back(*player);
     }
     for(int i = 0; i < numPlayers; ++i) {
@@ -136,7 +137,19 @@ void newDraft(int numPlayers, vector<Player> &players) {
 }
 
 void createSchedule(std::vector<Player> &players) {
+    for(int i = 0; i < players.size(); i++) {
+        for(int k = 0; k < players.size(); k++) {
+            if(players[k].getName() != players[i].getName()) {
+                players[i].addToSchedule(players[k].getName());
+            }
+        }
+    }
+}
 
+void printSchedule(std::ostream& os, std::vector<Player> &players) {
+    for(int i = 0; i < players.size(); i++) {
+        players[i].displaySchedule(os);
+    }
 }
 
 #endif // MENU_H

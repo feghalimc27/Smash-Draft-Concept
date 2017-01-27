@@ -19,9 +19,7 @@ int main() {
         switch(choice) {
             case 1:
                 // clear players vector before each new draft
-                for(int i = 1; i <= players.size(); i++) {
-                    players.pop_back();
-                }
+                players.clear();
 
                 cout << "How many players are in the draft?"<< endl;
                 cin >> choice;
@@ -30,7 +28,8 @@ int main() {
                 choice = 1;
             break;
             case 2:
-                cout << "Mustard\n";
+                createSchedule(players);
+                printSchedule(cout, players);
             break;
             case 3:
                 choice = 3;
