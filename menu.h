@@ -7,7 +7,7 @@
 #include <algorithm>>
 #include <player.h>
 
-void displayTeams(std::vector<Player> &players) {
+void displayTeams(std::ostream& os, std::vector<Player> &players) {
     cout << "Draft Results:" << endl << endl;
     for(int i = 0; i < players.size(); i++) {
         cout << players[i] << endl;
@@ -119,7 +119,7 @@ void newDraft(int numPlayers, vector<Player> &players) {
             system("cls");
             std::sort(players.begin(), players.end());
             actDraft(players);
-            displayTeams(players);
+            displayTeams(cout, players);
             return;
         }
         else if(choice == 'N' || choice == 'n') {
