@@ -1,16 +1,17 @@
+
 #ifndef MENU_H
 #define MENU_H
 
 #include <fstream>
 #include <vector>
 #include <string>
-#include <algorithm>>
+#include <algorithm>
 #include <player.h>
 
 void displayTeams(std::ostream& os, std::vector<Player> &players) {
     cout << "Draft Results:" << endl << endl;
     for(int i = 0; i < players.size(); i++) {
-        cout << players[i] << endl;
+        os << players[i] << endl;
     }
 }
 
@@ -137,20 +138,31 @@ void newDraft(int numPlayers, vector<Player> &players) {
 }
 
 void createSchedule(std::vector<Player> &players) {
-    for(int i = 0; i < players.size() - 1; i++) {
-        for(int k = 0; k < players.size(); k++) {
-            if(players[k].getName() != players[i].getName()) {
-                players[k].addToSchedule(players[i].getName());
+    int k = players.size() - 1;
+    for(int n = 0; n < players.size(); n++) {
+        for(int i = 0; i < players.size() / 2; i++) {
+                if(i + n < k) {
+                    players[k - i].addToSchedule(players[i + n].getName());
+                    players[i + n].addToSchedule(players[k - i].getName());
+                }
+                else if(i + n >= k) {
+                    players[k - i].addToSchedule(players[(i + n) - k].getName());
+                    players[(i + n) - k].addToSchedule(players[k - i].getName());
             }
         }
     }
 }
 
 void printSchedule(std::ostream& os, std::vector<Player> &players) {
-    for(int i = 0; i < players.size(); i++) {
-        os << "Week " << i + 1 << std::endl;
-        for(int k = 0; k < players.size() - 1; k++) {
-            players[i].getResult(os, k + 1);
+    // correct week value
+    int j = players.size();
+    j = j/2;
+    j++;
+
+    for(int i = 1; i < j; i++) {
+        os << "Week: " << i << std::endl;
+        for(int k = 0; k < players.size(); k++) {
+            players[k].getMatchup(os, i);
         }
     }
 }

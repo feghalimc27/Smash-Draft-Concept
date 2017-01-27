@@ -26,11 +26,13 @@ int main() {
                 cin.ignore();
                 newDraft(choice, players);
                 createSchedule(players);
+                cout << players[1].getWeeks() << endl;
                 choice = 1;
             break;
             case 2:
                 displayTeams(cout, players);
                 printSchedule(cout, players);
+                choice = 2;
             break;
             case 3:
                 choice = 3;

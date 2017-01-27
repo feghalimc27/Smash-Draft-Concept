@@ -33,8 +33,10 @@ public:
     std::string getChar(int i);
     std::string getName();
     int getSize();
+    int getWeeks();
 
     std::ostream& getResult(std::ostream& os, int week);
+    std::ostream& getMatchup(std::ostream& os, int week);
 
     void setPosition(int i);
     void setSeed(int i);

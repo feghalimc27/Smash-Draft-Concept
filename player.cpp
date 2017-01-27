@@ -39,6 +39,16 @@ std::ostream& Player::getResult(std::ostream& os, int week) {
     return schedule.getResult(os, week);
 }
 
+std::ostream& Player::getMatchup(std::ostream &os, int week) {
+    int i = week - 1;
+    os << name << " vs. " << schedule.opponents[i] << std::endl;
+    return os;
+}
+
+int Player::getWeeks() {
+    return schedule.opponents.size();
+}
+
 void Player::setSeed(int i) {
     seed = i;
 }
