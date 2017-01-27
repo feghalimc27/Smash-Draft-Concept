@@ -34,6 +34,8 @@ public:
     std::string getName();
     int getSize();
 
+    std::ostream& getResult(std::ostream& os, int week);
+
     void setPosition(int i);
     void setSeed(int i);
     void setChar(int i, std::string newChar);

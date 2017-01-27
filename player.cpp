@@ -35,6 +35,10 @@ std::string Player::getChar(int i) {
     }
 }
 
+std::ostream& Player::getResult(std::ostream& os, int week) {
+    return schedule.getResult(os, week);
+}
+
 void Player::setSeed(int i) {
     seed = i;
 }
@@ -70,7 +74,7 @@ void Player::addToSchedule(std::string name) {
 
 std::ostream& Player::displaySchedule(std::ostream &os) {
     os << name << "'s Schedule: " << std::endl;
-    os << "     " << schedule;
+    os << schedule;
     return os;
 }
 
@@ -111,7 +115,7 @@ std::ostream& Player::Schedule::getRecord(std::ostream& os) {
 
 std::ostream& Player::Schedule::getResult(std::ostream& os, int week) {
     if(results[week - 1]) {
-        os << "Week: " << week << " vs. " << opponents[week - 1] << " " << results[week - 1] << "\n";
+        os << "Week: " << week << " " << playerName << " vs. " << opponents[week - 1] << " " << results[week - 1] << "\n";
         return os;
     }
     else {
@@ -123,14 +127,14 @@ std::ostream& Player::Schedule::getResult(std::ostream& os, int week) {
 std::ostream& operator<<(std::ostream& os, const Player &player) {
     os << player.name << "'s team: \n";
     for(int i = 0; i < player.characters.size(); i++) {
-        os << i + 1 << ". " << player.characters[i] << "\n";
+        os << "    " << i + 1 << ". " << player.characters[i] << "\n";
     }
     return os;
 }
 
 std::ostream& operator<<(std::ostream& os, const Player::Schedule& right) {
     for(int i = 0; i < right.opponents.size(); i++) {
-        os << " Week: " << i + 1 << " vs. " << right.opponents[i] << " " << right.results[i] << std::endl;
+        os << " Week: " << i + 1 << " " <<right.playerName << " vs. " << right.opponents[i] << " " << right.results[i] << std::endl;
     }
 
     return os;

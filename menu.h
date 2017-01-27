@@ -137,10 +137,10 @@ void newDraft(int numPlayers, vector<Player> &players) {
 }
 
 void createSchedule(std::vector<Player> &players) {
-    for(int i = 0; i < players.size(); i++) {
+    for(int i = 0; i < players.size() - 1; i++) {
         for(int k = 0; k < players.size(); k++) {
             if(players[k].getName() != players[i].getName()) {
-                players[i].addToSchedule(players[k].getName());
+                players[k].addToSchedule(players[i].getName());
             }
         }
     }
@@ -148,7 +148,10 @@ void createSchedule(std::vector<Player> &players) {
 
 void printSchedule(std::ostream& os, std::vector<Player> &players) {
     for(int i = 0; i < players.size(); i++) {
-        players[i].displaySchedule(os);
+        os << "Week " << i + 1 << std::endl;
+        for(int k = 0; k < players.size() - 1; k++) {
+            players[i].getResult(os, k + 1);
+        }
     }
 }
 
