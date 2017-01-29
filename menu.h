@@ -64,6 +64,7 @@ void actDraft(std::vector<Player> &players) {
         }
         perTeam = c;
         invalidPick = true;
+        system("cls");
         for(int i = 0; i < numPlayers * perTeam;) {
             for(int j = 0; j < vRoster.size(); j++) {
                 cout << j + 1 << ". " << vRoster[j] << endl;
@@ -125,9 +126,7 @@ void newDraft(int numPlayers, vector<Player> &players) {
         }
         else if(choice == 'N' || choice == 'n') {
             cout << "Clearing draft order..." << endl;
-            for(int i = 0; i < numPlayers; ++i) {
-                players.pop_back();
-            }
+            players.clear();
             system("cls");
             return;
         }
@@ -161,7 +160,7 @@ void printSchedule(std::ostream& os, std::vector<Player> &players) {
 
     for(int i = 1; i < j; i++) {
         os << "Week: " << i << std::endl;
-        for(int k = 0; k < players.size(); k++) {
+        for(int k = 0; k < players.size() / 2; k++) {
             players[k].getMatchup(os, i);
         }
     }
