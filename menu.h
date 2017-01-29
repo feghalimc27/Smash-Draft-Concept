@@ -160,8 +160,15 @@ void printSchedule(std::ostream& os, std::vector<Player> &players) {
 
     for(int i = 1; i < j; i++) {
         os << "Week: " << i << std::endl;
-        for(int k = 0; k < players.size() / 2; k++) {
-            players[k].getMatchup(os, i);
+        if (players.size() % 2 == 0) {
+            for(int k = 0; k < players.size() / 2; k++) {
+                players[k].getMatchup(os, i);
+            }
+        }
+        else {
+            for(int k = 0; k < j; k++) {
+                players[k].getMatchup(os, i);
+            }
         }
     }
 }
